@@ -2,6 +2,7 @@ package br.edu.ifpe.arqsoft.ws.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -11,9 +12,8 @@ import br.edu.ifpe.soapserver.ws.service.BookService;
 
 public class WSClient {
 	public static void main(String[] args) throws MalformedURLException {
-
-		// All data contained in this class was gathered from WSDL
-
+		Scanner sc = new Scanner(System.in);
+		
 		URL wsdlURL = new URL("http://localhost:8888/ws/Book?wsdl");
 
 		QName qname = new QName("http://service.ws.soapserver.ifpe.edu.br/", "BookServiceImplService");
@@ -55,5 +55,47 @@ public class WSClient {
 		System.out.println("Removendo livro de id: " + book1.getCode() + " | " + bookService.removeBook("123456"));
 		System.out.println("O livro com id: " + book1.getCode() + " está disponível? " + bookService.isBookAvailable(book1.getCode()));
 		System.out.println("O livro com id: " + book2.getCode() + " custa menos que $35? " + bookService.isBookCostAbove(book2.getCode(), 35));
+		
+		int switchCaseUser = 5;
+		
+		while(switchCaseUser != 0) {
+			System.out.println("|===========OPÇÕES===========|");
+			System.out.println("|1 - Adicionar livro         |");
+			System.out.println("|2 - Buscar livro            |");
+			System.out.println("|3 - Remover livro           |");
+			System.out.println("|4 - Checar disponibilidade  |");
+			System.out.println("|0 - Sair!                   |");
+			System.out.println("|============================|");
+			
+
+			switchCaseUser = sc.nextInt();
+			sc.nextLine();
+			
+			switch(switchCaseUser) {
+				case 1:
+					System.out.print("Título: "); String title = sc.nextLine();
+					System.out.print("Código: "); String codigo = sc.nextLine();
+					System.out.print("Preço: "); double preco = sc.nextDouble();
+					
+					Book bookj = new Book();
+					bookj.setTitle(title);
+					bookj.setCode(codigo);
+					bookj.setCost(preco);
+					System.out.println("Adicionando livro: " + bookj.getTitle() + " (" + bookj.getCost() + ") " + bookService.addBook(bookj));
+					
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 0:
+					System.out.println("Saindo...");
+					break;
+			}
+		}
+		
+		sc.close();
 	}
 }
