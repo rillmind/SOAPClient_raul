@@ -47,10 +47,10 @@ public class WSClient {
 		System.out.println("Adicionando livro: " + book2.getTitle() + " (" + book2.getCost() + ")" + " | " + bookService.addBook(book2));
 		System.out.println("Adicionando livro: " + book3.getTitle() + " (" + book3.getCost() + ")" + " | " + bookService.addBook(book3));
 		System.out.println("Adicionando livro: " + book4.getTitle() + " (" + book4.getCost() + ")" + " | " + bookService.addBook(book4));
-		System.out.println( "Retornando livro: " + bookService.getBookById("123456").getTitle() + " (" + book1.getCost() + ")");
-		System.out.println( "Retornando livro: " + bookService.getBookById("654321").getTitle() + " (" + book2.getCost() + ")");
-		System.out.println( "Retornando livro: " + bookService.getBookById("456789").getTitle() + " (" + book3.getCost() + ")");
-		System.out.println( "Retornando livro: " + bookService.getBookById("789123").getTitle() + " (" + book4.getCost() + ")");
+		System.out.println("Retornando livro: " + bookService.getBookById("123456").getTitle() + " (" + book1.getCost() + ")");
+		System.out.println("Retornando livro: " + bookService.getBookById("654321").getTitle() + " (" + book2.getCost() + ")");
+		System.out.println("Retornando livro: " + bookService.getBookById("456789").getTitle() + " (" + book3.getCost() + ")");
+		System.out.println("Retornando livro: " + bookService.getBookById("789123").getTitle() + " (" + book4.getCost() + ")");
 		System.out.println("O livro com id: " + book1.getCode() + " está disponível? " + bookService.isBookAvailable(book1.getCode()));
 		System.out.println("Removendo livro de id: " + book1.getCode() + " | " + bookService.removeBook("123456"));
 		System.out.println("O livro com id: " + book1.getCode() + " está disponível? " + bookService.isBookAvailable(book1.getCode()));
@@ -95,6 +95,9 @@ public class WSClient {
 				bookService.getBooks();
 				break;
 			case 3:
+				System.out.println("Código: ");
+				String codigo4 = sc.nextLine();
+				System.out.println("Retornando livro: " + bookService.getBookById(codigo4).getTitle());
 				break;
 			case 4:
 				System.out.print("Código do livro: ");
